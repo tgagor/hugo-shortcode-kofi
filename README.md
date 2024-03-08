@@ -1,5 +1,9 @@
 # Hugo shortcodes for Ko-fi
 
+[![build](https://github.com/tgagor/hugo-shortcode-kofi/actions/workflows/test-and-release.yml/badge.svg?branch=main)](https://github.com/tgagor/hugo-shortcode-kofi/actions/workflows/test-and-release.yml)
+![GitHub](https://img.shields.io/github/license/tgagor/hugo-shortcode-kofi)
+![GitHub Release Date](https://img.shields.io/github/release-date/tgagor/hugo-shortcode-kofi)
+
 This is a set of shortcodes to allow easy integration with [Ko-fi](https://ko-fi.com/).
 
 [Live demo on my blog](https://gagor.pro//2024/03/kofi-shortcodes-for-hugo/).
