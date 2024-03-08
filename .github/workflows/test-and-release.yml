@@ -33,6 +33,7 @@ jobs:
           ln -s ../ themes/hugo-kofi-shortcodes
 
           ls -la themes/
+          hugo config
 
           hugo --minify
 
