@@ -29,8 +29,8 @@ jobs:
           # install PaperMod theme
           git clone --depth=1 https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod
 
-          # install hugo-kofi-shortcodes
-          ln -s ../ themes/hugo-kofi-shortcodes
+          # install hugo-shortcode-kofi
+          ln -s ../ themes/hugo-shortcode-kofi
 
           ls -la themes/
           hugo config

@@ -4,7 +4,7 @@ title: My New Hugo Site with Ko-fi me shortcodes
 
 theme:
   - PaperMod # your preferred theme
-  - hugo-kofi-shortcodes
+  - hugo-shortcode-kofi
 
 params:
   # ko-fi config

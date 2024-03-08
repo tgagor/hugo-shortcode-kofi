@@ -1,4 +1,4 @@
-# hugo-kofi-shortcodes
+# hugo-shortcode-kofi
 
 This is a set of shortcodes to allow easy integration with [Ko-fi](https://ko-fi.com/).
 
@@ -6,13 +6,13 @@ This is a set of shortcodes to allow easy integration with [Ko-fi](https://ko-fi
 
 # Installation
 
-1. Clone hugo-kofi-shortcodes repo to your project:
+1. Clone hugo-shortcode-kofi repo to your project:
 
 - as submodule (recommended)
     ```bash
     cd your-site-location
 
-    git submodule add --depth=1 https://github.com/tgagor/hugo-kofi-shortcodes.git themes/hugo-kofi-shortcodes
+    git submodule add --depth=1 https://github.com/tgagor/hugo-shortcode-kofi.git themes/hugo-shortcode-kofi
 
     # initialize any uninitialized submodules in the repository
     # and then recursively update all submodules
@@ -23,7 +23,7 @@ This is a set of shortcodes to allow easy integration with [Ko-fi](https://ko-fi
     ```bash
     cd your-site-location
 
-    git clone --depth=1 https://github.com/tgagor/hugo-kofi-shortcodes.git themes/hugo-kofi-shortcodes
+    git clone --depth=1 https://github.com/tgagor/hugo-shortcode-kofi.git themes/hugo-shortcode-kofi
     ```
 
 3. Update blog config:
@@ -31,7 +31,7 @@ This is a set of shortcodes to allow easy integration with [Ko-fi](https://ko-fi
 ```yaml
 theme:
   - YourThemeOfChoice
-  - hugo-kofi-shortcodes
+  - hugo-shortcode-kofi
 ```
 
 Original theme should be first, followed up by extension.
