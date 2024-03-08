@@ -30,7 +30,7 @@ jobs:
           git clone --depth=1 https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod
 
           # install hugo-shortcode-kofi
-          ln -s $(pwd) themes/hugo-shortcode-kofi
+          ln -s $(pwd)/.. themes/hugo-shortcode-kofi
 
           ls -la themes/
           hugo config
