@@ -32,9 +32,6 @@ jobs:
           # install hugo-shortcode-kofi
           ln -s $(pwd)/.. themes/hugo-shortcode-kofi
 
-          ls -la themes/
-          hugo config
-
           hugo --minify
 
           # clean up
