@@ -1,4 +1,4 @@
-# hugo-shortcode-kofi
+# Hugo shortcodes for Ko-fi
 
 This is a set of shortcodes to allow easy integration with [Ko-fi](https://ko-fi.com/).
 
@@ -13,10 +13,11 @@ This is a set of shortcodes to allow easy integration with [Ko-fi](https://ko-fi
     cd your-site-location
 
     git submodule add --depth=1 https://github.com/tgagor/hugo-shortcode-kofi.git themes/hugo-shortcode-kofi
+    ```
 
-    # initialize any uninitialized submodules in the repository
-    # and then recursively update all submodules
-    # to their latest versions
+    You might need to initialize any uninitialized submodules in the repository and then recursively update all submodules to their latest versions to make it fully available:
+
+    ```bash
     git submodule update --init --recursive
     ```
 - or by just cloning
