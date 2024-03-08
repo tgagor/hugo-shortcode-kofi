@@ -1,0 +1,41 @@
+<!-- Author: Tomasz Gągor https://github.com/tgagor/hugo-kofi-shortcodes -->
+<!-- Ko-fi Image -->
+<!--
+Parameters:
+user - your username from ko-fi.com/username page
+alt_text - alt_text shown when picture can't be downloaded
+height - picture height
+color - there are colors numbered from 1-5 blue, dirty blue, red, green, black
+-->
+
+{{- $user := "" -}}
+{{- with $.Page.Site.Params.kofi.username -}}
+    {{- $user = . -}}
+{{- end -}}
+{{- with .Get "user" -}}
+    {{- $user = . -}}
+{{- end -}}
+{{- if not $user -}}
+    {{- errorf "shortcode kofi/image2: can't determine the Ko-fi username, use 'user' parameter in this shortcode or set it globally in the config.yaml under: `params.kofi.username'" -}}
+{{- end -}}
+
+{{- $alt_text := "Buy Me a Coffee at ko-fi.com" -}}
+{{- with .Get "alt_text" -}}
+    {{- $alt_text = . -}}
+{{- end -}}
+
+{{- $height := "36" -}}
+{{- with .Get "height" -}}
+    {{- $height = . -}}
+{{- end -}}
+
+{{- $image := "https://storage.ko-fi.com/cdn/brandasset/kofi_button_blue.png" -}}
+{{- $colors := slice "blue" "red" "stroke" "dark" -}}
+{{- with .Get "style" -}}
+    {{- if not (in $colors .) -}}
+        {{- errorf "shortcode kofi/image2: parameter 'style' can only accept one of: %s" (delimit $colors ", ") -}}
+    {{- end -}}
+    {{- $image = printf "https://storage.ko-fi.com/cdn/brandasset/kofi_button_%s.png" . -}}
+{{- end -}}
+
+{{ partial "kofi_image" (dict "user" $user "alt_text" $alt_text "height" $height "url" $image) }}

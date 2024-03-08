@@ -1,0 +1,50 @@
+<!-- Author: Tomasz Gągor https://github.com/tgagor/hugo-kofi-shortcodes -->
+<!-- Ko-fi Image -->
+<!--
+Parameters:
+user - your username from ko-fi.com/username page
+alt_text - alt_text shown when picture can't be downloaded
+height - picture height
+style - there are styles numbered from 1-5 blue, dirty blue, red, green, black
+-->
+
+{{- $user := "" -}}
+{{- with $.Page.Site.Params.kofi.username -}}
+    {{- $user = . -}}
+{{- end -}}
+{{- with .Get "user" -}}
+    {{- $user = . -}}
+{{- end -}}
+{{- if not $user -}}
+    {{- errorf "shortcode kofi/badge: can't determine the Ko-fi username, use 'user' parameter in this shortcode or set it globally in the config.yaml under: `params.kofi.username'" -}}
+{{- end -}}
+
+{{- $alt_text := "Buy Me a Coffee at ko-fi.com" -}}
+{{- with .Get "alt_text" -}}
+    {{- $alt_text = . -}}
+{{- end -}}
+
+{{- $height := "100" -}}
+{{- with .Get "height" -}}
+    {{- $height = . -}}
+{{- end -}}
+
+{{- $width := "271" -}}
+{{- with .Get "width" -}}
+    {{- $width = . -}}
+{{- end -}}
+
+{{- $image := "https://storage.ko-fi.com/cdn/brandasset/kofi_s_tag_white.png" -}}
+{{- $colors := dict "white" "kofi_s_tag_white" "dark" "kofi_bg_tag_dark" "bg-white" "kofi_bg_tag_white" "bg-dark" "kofi_s_tag_dark" -}}
+{{- $keys := slice -}}
+{{- range $k, $_ := $colors -}}
+    {{- $keys = $keys | append $k -}}
+{{- end -}}
+{{- with .Get "style" -}}
+    {{- if not (in $keys .) -}}
+        {{- errorf "shortcode kofi/badge: parameter 'style' can only accept one of: %s" (delimit $keys ", ") -}}
+    {{- end -}}
+    {{- $image = printf "https://storage.ko-fi.com/cdn/brandasset/%s.png" (index $colors .) -}}
+{{- end -}}
+
+{{ partial "kofi_image" (dict "user" $user "alt_text" $alt_text "height" $height "width" $width "url" $image) }}

@@ -1,0 +1,38 @@
+<!-- Author: Tomasz Gągor https://github.com/tgagor/hugo-kofi-shortcodes -->
+<!-- Ko-fi Button -->
+<!--
+Parameters:
+user - your username from ko-fi.com/username page
+text - text shown on the button
+color - hex color of the button
+-->
+
+{{- $user := "" -}}
+{{- with $.Page.Site.Params.kofi.username -}}
+    {{- $user = . -}}
+{{- end -}}
+{{- with .Get "user" -}}
+    {{- $user = . -}}
+{{- end -}}
+{{- if not $user -}}
+    {{- errorf "shortcode kofi/button: can't determine the Ko-fi username, use 'user' parameter in this shortcode or set it globally in the config.yaml under: `params.kofi.username'" -}}
+{{- end -}}
+
+{{- $text := "Support Me on Ko-fi" -}}
+{{- with .Get "text" -}}
+    {{- $text = . -}}
+{{- end -}}
+
+{{- $color := "#29abe0" -}}
+{{- with .Get "color" -}}
+    {{- $color = . -}}
+{{- end -}}
+
+{{- if not (.Page.Store.Get "hasKofiWidget2") -}}
+{{- .Page.Store.Set "hasKofiWidget2" true -}}
+<script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
+{{- end -}}
+
+<script
+    type='text/javascript'>kofiwidget2.init('{{ $text }}', '{{ $color }}', '{{ $user }}'); kofiwidget2.draw();
+</script>

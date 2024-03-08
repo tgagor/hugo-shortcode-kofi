@@ -1,0 +1,17 @@
+baseURL: 'https://example.org/'
+languageCode: en-us
+title: My New Hugo Site with Ko-fi me shortcodes
+
+theme:
+  - PaperMod # your preferred theme
+  - hugo-kofi-shortcodes
+
+params:
+  # ko-fi config
+  kofi:
+    username: tgagor
+
+menu:
+  main:
+    - name: Demo
+      url: /posts/demo/

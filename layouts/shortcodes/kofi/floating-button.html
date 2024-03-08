@@ -1,0 +1,53 @@
+<!-- Author: Tomasz Gągor https://github.com/tgagor/hugo-kofi-shortcodes -->
+<!-- Ko-fi Floating Button Widget -->
+<!--
+Parameters:
+user - your username from ko-fi.com/username page
+text - text shown on the button
+color - hex color of the button
+bg_color - hex color of the button background
+-->
+
+{{- $user := "" -}}
+{{- with $.Page.Site.Params.kofi.username -}}
+    {{- $user = . -}}
+{{- end -}}
+{{- with .Get "user" -}}
+    {{- $user = . -}}
+{{- end -}}
+{{- if not $user -}}
+    {{- errorf "shortcode kofi/floating-button: can't determine the Ko-fi username, use 'user' parameter in this shortcode or set it globally in the config.yaml under: `params.kofi.username'" -}}
+{{- end -}}
+
+{{- $type := "floating-chat" -}}
+{{- with .Get "type" -}}
+    {{- $type = . -}}
+{{- end -}}
+
+{{- $text := "Tip Me" -}}
+{{- with .Get "text" -}}
+    {{- $text = . -}}
+{{- end -}}
+
+{{- $bg_color := "#00b9fe" -}}
+{{- with .Get "bg_color" -}}
+    {{- $bg_color = . -}}
+{{- end -}}
+
+{{- $color := "#fff" -}}
+{{- with .Get "color" -}}
+    {{- $color = . -}}
+{{- end -}}
+
+{{- if not (.Page.Store.Get "hasKofiOverlay") -}}
+{{- .Page.Store.Set "hasKofiOverlay" true -}}
+<script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+{{- end -}}
+<script>
+    kofiWidgetOverlay.draw('{{ $user }}', {
+        'type': '{{ $type }}',
+        'floating-chat.donateButton.text': '{{ $text }}',
+        'floating-chat.donateButton.background-color': '{{ $bg_color }}',
+        'floating-chat.donateButton.text-color': '{{ $color }}'
+    });
+</script>

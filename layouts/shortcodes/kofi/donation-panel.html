@@ -1,0 +1,33 @@
+<!-- Author: Tomasz Gągor https://github.com/tgagor/hugo-kofi-shortcodes -->
+<!-- Ko-fi Donation Panel Widget -->
+<!--
+Parameters:
+user - your username from ko-fi.com/username page
+button_text - text shown on the button
+bg_color - hex color of the button background
+height - picture height
+-->
+
+{{- $user := "" -}}
+{{- with $.Page.Site.Params.kofi.username -}}
+    {{- $user = . -}}
+{{- end -}}
+{{- with .Get "user" -}}
+    {{- $user = . -}}
+{{- end -}}
+{{- if not $user -}}
+    {{- errorf "shortcode kofi/donation-panel: can't determine the Ko-fi username, use 'user' parameter in this shortcode or set it globally in the config.yaml under: `params.kofi.username'" -}}
+{{- end -}}
+
+{{- $bg_color := "#f9f9f9" -}}
+{{- with .Get "bg_color" -}}
+    {{- $bg_color = . -}}
+{{- end -}}
+
+{{- $height := "712" -}}
+{{- with .Get "height" -}}
+    {{- $height = . -}}
+{{- end -}}
+
+<iframe id='kofiframe' src='https://ko-fi.com/tgagor/?hidefeed=true&widget=true&embed=true&preview=true'
+    style='border:none;width:100%;padding:4px;background:{{ $bg_color }};' height='{{ $height }}' title='{{ $user }}'></iframe>
