@@ -6,7 +6,7 @@
 
 This is a set of shortcodes to allow easy integration with [Ko-fi](https://ko-fi.com/).
 
-[Live demo on my blog](https://gagor.pro//2024/03/kofi-shortcodes-for-hugo/).
+[Live demo on my blog](https://gagor.pro/2024/03/monetize-your-blog-with-ko-fi-shortcodes-for-hugo-sites/).
 
 # Installation
 
