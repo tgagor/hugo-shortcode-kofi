@@ -33,7 +33,8 @@ jobs:
           git clone --depth=1 https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod
 
           # install hugo-shortcode-kofi
-          ln -s $(pwd)/.. themes/hugo-shortcode-kofi
+          mkdir -p themes/hugo-shortcode-kofi
+          cp -r ../layouts themes/hugo-shortcode-kofi/
 
           hugo --minify
 
